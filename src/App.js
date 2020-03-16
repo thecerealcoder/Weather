@@ -1,24 +1,67 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Moment from "react-moment";
+
+import Found from "./components/Found"
+import NotFound from "./components/NotFound"
+
+
+const api = {
+  key: "7b3aa8537696bb0c921368d89f052ff4",
+  base: "https://api.openweathermap.org/data/2.5/"
+}
+
+const defaultBackground = "https://images.unsplash.com/photo-1537461992341-9a32ae2b0054?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80"
+
 
 function App() {
+  const [query, setQuery] = useState("")
+  const [weather, setWeather] = useState({})
+
+  const date = new Date();
+  const momentDate = <Moment format="MMMM Do YYYY">{date}</Moment>;
+
+  document.body.style.backgroundImage = `url(${defaultBackground})`
+
+  function handleChange(evt) {
+    if ((evt.key) === "Enter") {
+      fetch(`${api.base}weather?q=${query}&units=imperial&APPID=${api.key}`)
+        .then(res => res.json())
+        .then(result => {
+          setWeather(result)
+          setQuery("")
+          console.log(result)
+        })
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <main> 
+        <div className="search-box">
+          <input 
+            type="text"
+            className="search-bar"
+            placeholder="Enter your location..."
+            onChange={ev => setQuery(ev.target.value)}
+            onKeyPress={handleChange}
+            value={query}
+            />
+        </div>
+    
+        {Object.keys(weather).length !== 0 && 
+
+        <div>
+          {weather.cod === "404" ? 
+
+          (
+            <NotFound />
+            ) : (
+            <Found weather={weather} momentDate={momentDate} />
+          )
+        }
+       </div>
+    }
+      </main>
     </div>
   );
 }
