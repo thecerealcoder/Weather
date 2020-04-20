@@ -16,12 +16,12 @@ body {
   background-position: center center;
 }
 
-.search-box {
+.searchBox {
   width: 100%;
   margin: 0 0 75px;
 }
 
-.search-box .search-bar {
+.searchBox #searchBar {
   display: block; 
   width: 100%;
   padding: 15px;
@@ -41,7 +41,7 @@ body {
   transition: .4s ease;
 }
 
-.search-box .search-bar:focus {
+.searchBox #searchBar:focus {
   background-color: rgba(255,255,255,.75);
 }
 
@@ -50,7 +50,7 @@ body {
   justify-content: center;
 }
 
-#weatherBox, #notFound {
+.weatherBox, #notFound {
   color:white;
   padding-top: 100px;
   padding: 20px 0px;
@@ -88,12 +88,12 @@ body {
 }
 
 @media only screen and (max-width: 1000px) {
-  #weatherBox, #notFound {
+  .weatherBox, #notFound {
     width:80%;
   }
 }
 @media only screen and (max-width: 600px) {
-  #weatherBox, #notFound {
+  .weatherBox, #notFound {
     width:100%;
   }
 }

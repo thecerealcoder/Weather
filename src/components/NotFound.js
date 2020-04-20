@@ -2,9 +2,9 @@ import React from "react"
 
 function NotFound() {
     return(
-        <div class="flex">
+        <div className="flex">
              <div id="notFound">
-                City not found
+                Location not found
             </div>
         </div>
     )

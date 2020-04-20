@@ -1,4 +1,52 @@
-import React from "react"
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Moment from "react-moment";
+import Found from "../components/Found.js"
+import {shallow} from 'enzyme';
+
+const weather = {
+    "coord": {
+        "lon": -87.65,
+        "lat": 41.85
+      },
+      "weather": [
+        {
+          "id": 800,
+          "main": "Clear",
+          "description": "clear sky",
+          "icon": "01n"
+        }
+      ],
+      "base": "stations",
+      "main": {
+        "temp": 279.38,
+        "feels_like": 273.85,
+        "temp_min": 278.71,
+        "temp_max": 280.15,
+        "pressure": 1011,
+        "humidity": 65
+      },
+      "visibility": 16093,
+      "wind": {
+        "speed": 5.1,
+        "deg": 80
+      },
+      "clouds": {
+        "all": 1
+      },
+      "dt": 1587344737,
+      "sys": {
+        "type": 1,
+        "id": 4861,
+        "country": "US",
+        "sunrise": 1587294184,
+        "sunset": 1587342942
+      },
+      "timezone": -18000,
+      "id": 4887398,
+      "name": "Chicago",
+      "cod": 200
+}
 
 const weatherType = 
 {
@@ -19,50 +67,17 @@ const weatherType =
   Clouds:"https://images.unsplash.com/photo-1527708676371-14f9a9503c95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"
 }
 
-function Found(props) {
+const date = new Date();
+const momentDate = <Moment format="MMMM Do YYYY">{date}</Moment>;
 
-  document.body.style.backgroundImage = `url(${weatherType[props.weather.weather[0].main]})`
+describe('Found component', () => {
+    it('Renders without crashing', () => {
+        const div = document.createElement('div');
+        ReactDOM.render(<Found weather={weather} momentDate={momentDate}/>, div);
+    });
 
-    return(
-      <div className="flex">
-        <div className="weatherBox">
-        <div id="date">
-          {props.momentDate}
-        </div>
-        <div id="location">
-          <p>
-            {props.weather.name}, {props.weather.sys.country}
-          </p>
-        </div>
-        <div id="weather">
-          <p id="temp">
-            {Math.round(props.weather.main.temp)}
-            <span>°</span>
-          </p>
-          <div id="weathertype">
-            <p id="mainWeather">
-              {props.weather.weather[0].main}
-            </p>
-              <img id="icon" src=
-                {`http://openweathermap.org/img/wn/${props.weather.weather[0].icon}@2x.png`}>
-              </img>
-          </div>
-          <p>
-            <i className="fas fa-long-arrow-alt-down"></i>
-            {Math.round(props.weather.main.temp_min) }°F 
-            &#160;
-            <i className="fas fa-long-arrow-alt-up"></i>
-            {Math.round(props.weather.main.temp_max)}°F
-          </p>
-          <p>
-            <i className="fas fa-wind"></i> 
-            {Math.round(props.weather.wind.speed)}mph
-          </p>
-        </div>
-      </div>
-      </div>
-        
-    )
-}
+    it('Displays appropriate weather background', () => {
+        expect(document.body.style.backgroundImage).toEqual(`url(${weatherType[weather.weather[0].main]})`);
+    });
 
-export default Found
+});

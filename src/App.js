@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import Moment from "react-moment";
-
 import Found from "./components/Found"
 import NotFound from "./components/NotFound"
 
 
 const api = {
-  key: "7b3aa8537696bb0c921368d89f052ff4",
+  key: process.env.REACT_APP_API_KEY,
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
@@ -37,10 +36,10 @@ function App() {
   return (
     <div className="app">
       <main> 
-        <div className="search-box">
+        <div className="searchBox">
           <input 
             type="text"
-            className="search-bar"
+            id="searchBar"
             placeholder="Enter your location..."
             onChange={ev => setQuery(ev.target.value)}
             onKeyPress={handleChange}
