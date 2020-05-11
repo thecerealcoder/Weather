@@ -1,5 +1,5 @@
-# Weather App
-Weather data app made with Node.js and React. 
+# Weather App 
+Weather data app made with Node.js and React.                                                   **[Live Demo](https://thecerealcoder.github.io/weather/)**
 
 ![Demo](./public/demo.gif)
 
