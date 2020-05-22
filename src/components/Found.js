@@ -1,33 +1,90 @@
-import React from "react"
+import React from "react";
+import Moment from "react-moment";
+import Dragger from 'react-physics-dragger';
+import { clear, cloudy, drizzle, rain, snow, thunder } from "../svgLoader";
+
+const date = new Date();
+const momentDate = <Moment format="MMMM Do YYYY">{date}</Moment>;
 
 const weatherType = 
 {
-  Thunderstorm:"https://images.unsplash.com/photo-1504792001904-7a52bab2ec06?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-  Drizzle:"https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-  Rain:"https://images.unsplash.com/photo-1515694346937-94d85e41e6f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-  Snow:"https://images.unsplash.com/photo-1550715512-4243118863f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-  Mist:"https://images.unsplash.com/photo-1525747489694-0e01dd364620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-  Smoke:"https://images.unsplash.com/photo-1525747489694-0e01dd364620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-  Haze:"https://images.unsplash.com/photo-1525747489694-0e01dd364620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-  Dust:"https://images.unsplash.com/photo-1525747489694-0e01dd364620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-  Fog:"https://images.unsplash.com/photo-1525747489694-0e01dd364620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-  Sand:"https://images.unsplash.com/photo-1525747489694-0e01dd364620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-  Ash:"https://images.unsplash.com/photo-1525747489694-0e01dd364620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-  Squall:"https://images.unsplash.com/photo-1525747489694-0e01dd364620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-  Tornado:"https://images.unsplash.com/photo-1525747489694-0e01dd364620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80",
-  Clear:"https://images.unsplash.com/photo-1537461992341-9a32ae2b0054?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80",
-  Clouds:"https://images.unsplash.com/photo-1527708676371-14f9a9503c95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80"
+  Thunderstorm: <object id="svgObject" data={thunder} type="image/svg+xml"></object>,
+  Drizzle:<object id="svgObject" data={drizzle} type="image/svg+xml"></object>,
+  Rain:<object id="svgObject" data={rain} type="image/svg+xml"></object>,
+  Snow:<object id="svgObject" data={snow} type="image/svg+xml"></object>,
+  Mist:<img src="http://openweathermap.org/img/wn/50d@2x.png"></img>,
+  Smoke:<img src="http://openweathermap.org/img/wn/50d@2x.png"></img>,
+  Haze:<img src="http://openweathermap.org/img/wn/50d@2x.png"></img>,
+  Dust:<img src="http://openweathermap.org/img/wn/50d@2x.png"></img>,
+  Fog:<img src="http://openweathermap.org/img/wn/50d@2x.png"></img>,
+  Sand:<img src="http://openweathermap.org/img/wn/50d@2x.png"></img>,
+  Ash:<img src="http://openweathermap.org/img/wn/50d@2x.png"></img>,
+  Squall:<img src="http://openweathermap.org/img/wn/50d@2x.png"></img>,
+  Tornado:<img src="http://openweathermap.org/img/wn/50d@2x.png"></img>,
+  Clear: <object id="svgObject" data={clear} type="image/svg+xml"></object>,
+  Clouds:<object id="svgObject" data={cloudy} type="image/svg+xml"></object>
 }
 
 function Found(props) {
 
-  document.body.style.backgroundImage = `url(${weatherType[props.weather.weather[0].main]})`
+let forecasts = [];  
 
-    return(
-      <div className="flex">
-        <div className="weatherBox">
+  
+function forecastBuilder() {
+  let forecastArray = props.forecast.daily;
+  let forecastHolder = "";
+  
+  for(let i = 0; i < forecastArray.length; i++) {
+    let forecastDate = <Moment format='dddd' add={{days: i}}>{date}</Moment>
+
+    forecastHolder = (
+    <div className="flex">
+    <div className="weatherBox">
+      <div id="date">
+        {i==0 ? "Today" :forecastDate}
+      </div>
+      <div id="location">
+        <p>
+          {props.weather.name}, {props.weather.sys.country}
+        </p>
+      </div>
+      <div id="weather">
+        <p id="temp">
+          {Math.round(forecastArray[i].temp.day)}
+          <span>°</span>
+        </p>
+        <div id="weathertype">
+          {weatherType[`${forecastArray[i].weather[0].main}`]}
+          <p id="mainWeather">
+            {forecastArray[i].weather[0].main}
+          </p>
+        </div>
+        <p>
+          <i className="fas fa-long-arrow-alt-down"></i>
+          {Math.round(forecastArray[i].temp.min)}{props.checked ? "°C" : "°F"}
+           &#160;
+          <i className="fas fa-long-arrow-alt-up"></i>
+          {Math.round(forecastArray[i].temp.max)}{props.checked ? "°C" : "°F"}
+        </p>
+        <p>
+          <i className="fas fa-wind"></i>
+          {Math.round(forecastArray[i].wind_speed)}{props.checked ? "m/s" : "mph"}
+        </p>
+      </div>
+    </div>
+  </div> );
+  forecasts.push(forecastHolder);
+  };
+}
+
+  if(props.format) forecastBuilder();
+
+
+  let current = (
+    <div className="flex">
+      <div className="weatherBox">
         <div id="date">
-          {props.momentDate}
+          {momentDate}
         </div>
         <div id="location">
           <p>
@@ -40,29 +97,38 @@ function Found(props) {
             <span>°</span>
           </p>
           <div id="weathertype">
+            <object id="svgObject" data={cloudy} type="image/svg+xml"></object>
             <p id="mainWeather">
               {props.weather.weather[0].main}
             </p>
-              <img id="icon" src=
-                {`http://openweathermap.org/img/wn/${props.weather.weather[0].icon}@2x.png`}>
-              </img>
           </div>
           <p>
             <i className="fas fa-long-arrow-alt-down"></i>
-            {Math.round(props.weather.main.temp_min) }°F 
-            &#160;
+            {Math.round(props.weather.main.temp_min)}{props.checked ? "°C" : "°F"}
+             &#160;
             <i className="fas fa-long-arrow-alt-up"></i>
-            {Math.round(props.weather.main.temp_max)}°F
+            {Math.round(props.weather.main.temp_max)}{props.checked ? "°C" : "°F"}
           </p>
           <p>
-            <i className="fas fa-wind"></i> 
-            {Math.round(props.weather.wind.speed)}mph
+            <i className="fas fa-wind"></i>
+            {Math.round(props.weather.wind.speed)}{props.checked ? "m/s" : "mph"}
           </p>
         </div>
       </div>
-      </div>
-        
-    )
+    </div> );
+
+    let forecastDisplay = (
+      <Dragger className="dragger">
+        {forecasts.map((forecast, key) => 
+        <div className="forecastContainer">{forecast}</div>
+        )}
+      </Dragger> );
+
+  return (
+    <div>
+      {props.format ?  forecastDisplay : current}
+    </div>
+  )
 }
 
 export default Found

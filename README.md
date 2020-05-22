@@ -1,5 +1,5 @@
-# Weather App 
-Weather data app made with Node.js and React. **[Live Demo](https://thecerealcoder.github.io/weather/)**
+# Flowly
+Weather tracker app made with Node.js and React. **[Live Demo](https://thecerealcoder.github.io/flowly/)**
 
 ![Demo](./public/demo.gif)
 
@@ -10,12 +10,14 @@ Weather data app made with Node.js and React. **[Live Demo](https://thecerealcod
 * [Setup](#setup)
 
 ## General info
-This project uses the OpenWeather API to gather current location data and display it. Just enter your location and receive real-time weather data such as temperature, wind, and weather condition that are visualized along with a matching dynamic background.
+This project uses the OpenWeather API to gather weather location data and displays it. Just enter your location and receive not only real-time weather data such as temperature, wind, and weather condition, but also a weekly weather forecast that is visualized along a dynamic linear gradient background.
 	
 ## Technologies
 Project is created with:
 * React (16.13.0)
 * Moment (2.24.0)
+* React Physics Dragger (1.4.0)
+* React Switch (5.0.1)
 * FontAwesome
 
 ## Resources

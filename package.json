@@ -1,6 +1,6 @@
 {
-  "homepage": "http://thecerealcoder.github.io/weather",
-  "name": "weather",
+  "homepage": "http://thecerealcoder.github.io/flowly",
+  "name": "flowly",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,7 +13,9 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-moment": "^0.9.7",
-    "react-scripts": "3.4.0"
+    "react-physics-dragger": "^1.4.0",
+    "react-scripts": "3.4.0",
+    "react-switch": "^5.0.1"
   },
   "scripts": {
     "predeploy": "npm run build",

@@ -1,11 +1,12 @@
-* {
-  margin: 0;
+html, body{
   padding: 0;
-  box-sizing: border-box;
+  margin: 0;
+  min-height:100%;
+  overflow-x: hidden;
 }
 
-html{
-  min-height:100%;
+path {
+  stroke: #FFFFFF !important;
 }
 
 body {
@@ -18,13 +19,15 @@ body {
 
 .searchBox {
   width: 100%;
-  margin: 0 0 75px;
+  box-sizing: border-box;
 }
 
 .searchBox #searchBar {
   display: block; 
+  height: 50px;
   width: 100%;
-  padding: 15px;
+  padding: 10px;
+  box-sizing: border-box;
 
   appearance: none; 
   background: none;
@@ -33,9 +36,6 @@ body {
 
   background-color: rgba(255,255,255,.5);
   border-radius: 0px 0px 16px 16px;
-
-  box-shadow: 0px 5px rgba(0,0,0,.2);
-
   font-size: 28px; 
 
   transition: .4s ease;
@@ -45,20 +45,66 @@ body {
   background-color: rgba(255,255,255,.75);
 }
 
+#welcome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 5% 3%;
+  color: white;
+  border: 2px solid black;
+  border-radius: 15px;
+  background: rgba(0,0,0,.40);
+  margin: 20% 0;
+}
+
+#welcome h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  padding: 5px;
+  border: .5px solid white;
+  border-radius: 10px;
+  width: 70%;
+}
+
+.dragger {
+  display:flex; 
+  flex-direction: column;
+}
+
 .flex{
   display:flex;
   justify-content: center;
 }
 
-.weatherBox, #notFound {
+.weatherBox, #notFound, .units, .format {
+  font-size: 20px;
   color:white;
-  padding-top: 100px;
-  padding: 20px 0px;
+  padding: 3% 0%;
   text-align: center;
   border: 1px solid black;
-  border-radius: 20px;
+  border-radius: 15px;
   background: rgba(0,0,0,.40);
-  width:25%;
+  min-width:95%;
+  height: 30%;
+}
+
+.units, .format {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: 40%;
+  margin: 4% auto;
+  padding: 2%;
+}
+
+.units p, .format p {
+  margin: 0%;
+}
+
+.sliderContainer {
+  display: flex;
+  flex-direction: row;
 }
 
 
@@ -70,9 +116,10 @@ body {
 }
 
 #temp {
-  padding-left: 50px;
+  padding-left: 45px;
   font-family: "Impact";
-  font-size: 150px;
+  font-size: 120px;
+  margin: 0;
 }
 
 #temp span {
@@ -83,17 +130,51 @@ body {
   margin-top: 10px;
 }
 
-.blue {
-  background:
+object {
+  transform: scale(1.5);
 }
 
-@media only screen and (max-width: 1000px) {
-  .weatherBox, #notFound {
-    width:80%;
-  }
+#date, #location {
+  margin: 0;
 }
-@media only screen and (max-width: 600px) {
-  .weatherBox, #notFound {
-    width:100%;
+
+.forecastContainer{
+  margin-right: 20%;
+  min-width: 100%;
+  display: inline-block;
+}
+
+/* Responsive Queries */
+@media only screen and (min-width: 600px) {
+  .weatherBox, #notFound, .forecastContainer .weatherBox{
+    min-width: 60%;
+    padding: 2%, 0%;
+  }
+  .units, .format { 
+    min-width: 25%;
+    margin: 2% 5%;
+  }
+  .sliderContainer{
+    margin: 0 auto;
+    width: 50%;
+    display:flex;
+    justify-content: center;
+  }
+  .dragger{
+    width: 30%;
+    min-height: 100%;
+  }
+  .forecastContainer {
+    width: 100%;
+  }
+  .forecastContainer .weatherBox{
+    width: 100%;
+  }
+  #welcome{
+    margin:5% auto;
+    width:50%;
+  }
+  #welcome h1{
+    font-size: 3rem;
   }
 }
