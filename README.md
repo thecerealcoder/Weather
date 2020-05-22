@@ -1,5 +1,5 @@
 # Flowly
-Weather tracker app made with Node.js and React. **[Live Demo](https://thecerealcoder.github.io/flowly/)**
+Weather tracker app made with Node.js and React. **[Live Demo](https://thecerealcoder.github.io/flowly)**
 
 ![Demo](./public/demo.gif)
 
