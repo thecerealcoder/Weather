@@ -18,7 +18,6 @@ Project is created with:
 * Moment (2.24.0)
 * React Physics Dragger (1.4.0)
 * React Switch (5.0.1)
-* FontAwesome
 
 ## Resources
 * [OpenWeather API](https://openweathermap.org/api) <sup>[*](#footnote)</sup>
