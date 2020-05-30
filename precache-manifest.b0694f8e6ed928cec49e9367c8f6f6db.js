@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8581980c9dc79fe2961bc93f22ea7258",
+    "revision": "853bb50e750cd8044d2fe7d7119abb1d",
     "url": "/flowly/index.html"
   },
   {
-    "revision": "e1f64f67b25a223ca720",
-    "url": "/flowly/static/css/main.f61c1f2a.chunk.css"
+    "revision": "6c409d26d437dcaf5d07",
+    "url": "/flowly/static/css/main.5d2d9bda.chunk.css"
   },
   {
     "revision": "1dfabe42e36ff39e880c",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/flowly/static/js/2.94e7518a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e1f64f67b25a223ca720",
-    "url": "/flowly/static/js/main.3bae0c61.chunk.js"
+    "revision": "6c409d26d437dcaf5d07",
+    "url": "/flowly/static/js/main.8cd96611.chunk.js"
   },
   {
     "revision": "811bfaa80acee30f99ae",

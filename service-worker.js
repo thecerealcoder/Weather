@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/flowly/precache-manifest.8c6f71b0c0c8f9dea76f055b1e135c81.js"
+  "/flowly/precache-manifest.b0694f8e6ed928cec49e9367c8f6f6db.js"
 );
 
 self.addEventListener('message', (event) => {

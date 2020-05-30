@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/flowly/static/css/main.f61c1f2a.chunk.css",
-    "main.js": "/flowly/static/js/main.3bae0c61.chunk.js",
-    "main.js.map": "/flowly/static/js/main.3bae0c61.chunk.js.map",
+    "main.css": "/flowly/static/css/main.5d2d9bda.chunk.css",
+    "main.js": "/flowly/static/js/main.8cd96611.chunk.js",
+    "main.js.map": "/flowly/static/js/main.8cd96611.chunk.js.map",
     "runtime-main.js": "/flowly/static/js/runtime-main.456ef9ab.js",
     "runtime-main.js.map": "/flowly/static/js/runtime-main.456ef9ab.js.map",
     "static/js/2.94e7518a.chunk.js": "/flowly/static/js/2.94e7518a.chunk.js",
     "static/js/2.94e7518a.chunk.js.map": "/flowly/static/js/2.94e7518a.chunk.js.map",
     "index.html": "/flowly/index.html",
-    "precache-manifest.8c6f71b0c0c8f9dea76f055b1e135c81.js": "/flowly/precache-manifest.8c6f71b0c0c8f9dea76f055b1e135c81.js",
+    "precache-manifest.b0694f8e6ed928cec49e9367c8f6f6db.js": "/flowly/precache-manifest.b0694f8e6ed928cec49e9367c8f6f6db.js",
     "service-worker.js": "/flowly/service-worker.js",
-    "static/css/main.f61c1f2a.chunk.css.map": "/flowly/static/css/main.f61c1f2a.chunk.css.map",
+    "static/css/main.5d2d9bda.chunk.css.map": "/flowly/static/css/main.5d2d9bda.chunk.css.map",
     "static/js/2.94e7518a.chunk.js.LICENSE.txt": "/flowly/static/js/2.94e7518a.chunk.js.LICENSE.txt",
     "static/media/clear.svg": "/flowly/static/media/clear.7f93fbdb.svg",
     "static/media/cloudy.svg": "/flowly/static/media/cloudy.ad789581.svg",
@@ -22,7 +22,7 @@
   "entrypoints": [
     "static/js/runtime-main.456ef9ab.js",
     "static/js/2.94e7518a.chunk.js",
-    "static/css/main.f61c1f2a.chunk.css",
-    "static/js/main.3bae0c61.chunk.js"
+    "static/css/main.5d2d9bda.chunk.css",
+    "static/js/main.8cd96611.chunk.js"
   ]
 }
