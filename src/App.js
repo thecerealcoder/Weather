@@ -13,8 +13,8 @@ function App() {
 	const [query, setQuery] = useState("");
 	const [weather, setWeather] = useState({});
 	const [forecast, setForecast] = useState({});
-	const [checked, setChecked] = useState(false);
-	const [format, setFormat] = useState(false);
+	const [checked, setChecked] = useState(false); //Default false is Fahrenheit, true is for Celsius
+	const [format, setFormat] = useState(false); //Default false is current weather, true is for weekly forecast
 
 	let linearGradient = `linear-gradient(to bottom, rgba(${getRandomValue()},${getRandomValue()},${getRandomValue()},1), 
                         rgba(${getRandomValue()},${getRandomValue()},${getRandomValue()},1))`;
@@ -56,6 +56,7 @@ function App() {
 		return randomValue;
 	}
 
+	//Changes linear gradient and fetches data for every search
 	function handleChange(evt) {
 		if (evt.key === "Enter") {
 			if (document.getElementById("welcome")) document.getElementById("welcome").style.display = "none";
@@ -83,7 +84,6 @@ function App() {
 					<h1>Welcome to Flowly!</h1>
 					<h2>Search for your city to get real time weather as well as a weekly forecast for your location.</h2>
 				</div>
-
 				{Object.keys(weather).length !== 0 && (
 					<div>
 						<div className="sliderContainer">
@@ -129,7 +129,6 @@ function App() {
 								<Switch onChange={handleFormat} checked={format} uncheckedIcon={<div></div>} checkedIcon={<div></div>} />
 							</div>
 						</div>
-
 						{weather.cod === "404" || query === "" ? <NotFound /> : <Found weather={weather} checked={checked} forecast={forecast} format={format} />}
 					</div>
 				)}

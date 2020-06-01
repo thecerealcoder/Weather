@@ -6,8 +6,9 @@ import { clear, cloudy, drizzle, rain, snow, thunder } from "../svgLoader";
 const date = new Date();
 const momentDate = <Moment format="MMMM Do YYYY">{date}</Moment>;
 
-const airConditionURL = "http://openweathermap.org/img/wn/50d@2x.png";
+const airConditionURL = "http://openweathermap.org/img/wn/50d@2x.png"; //URL for certain weather conditions
 
+//Images for each forecast
 const weatherType = {
 	Thunderstorm: <object id="svgObject" data={thunder} type="image/svg+xml"></object>,
 	Drizzle: <object id="svgObject" data={drizzle} type="image/svg+xml"></object>,
@@ -29,6 +30,7 @@ const weatherType = {
 function Found(props) {
 	let forecasts = [];
 
+	//Creates array of JSX representing a forecast for each weekday
 	function forecastBuilder() {
 		let forecastArray = props.forecast.daily;
 		let forecastHolder = "";
@@ -36,6 +38,8 @@ function Found(props) {
 		for (let i = 0; i < forecastArray.length; i++) {
 			let forecastDate = (
 				<Moment format="dddd" add={{ days: i }}>
+					{" "}
+					{/*Increments date per day in forecast */}
 					{date}
 				</Moment>
 			);
@@ -82,6 +86,16 @@ function Found(props) {
 
 	if (props.format) forecastBuilder();
 
+	//Encapsulates forecasts JSX in Dragger component for sliding through forecasts
+	let forecastDisplay = (
+		<Dragger className="dragger">
+			{forecasts.map((forecast, key) => (
+				<div className="forecastContainer">{forecast}</div>
+			))}
+		</Dragger>
+	);
+
+	//Defines current forecast
 	let current = (
 		<div className="flex">
 			<div className="weatherBox">
@@ -117,14 +131,6 @@ function Found(props) {
 				</div>
 			</div>
 		</div>
-	);
-
-	let forecastDisplay = (
-		<Dragger className="dragger">
-			{forecasts.map((forecast, key) => (
-				<div className="forecastContainer">{forecast}</div>
-			))}
-		</Dragger>
 	);
 
 	return <div>{props.format ? forecastDisplay : current}</div>;
